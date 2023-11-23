@@ -53,6 +53,21 @@ list(APPEND THIRDPART_INC  lua-rapidjson/include)
 set (THIRDPART_SRC ${THIRDPART_SRC} ${RAPIDJSON_SRC})
 #end lua-rapidjson
 
+#begin lsqlite3
+set (LSQL_SRC 
+    lsqlite3/lsqlite3.c
+    lsqlite3/sqlite3.c
+)
+set_property(
+    SOURCE ${LSQL_SRC}
+    APPEND
+    PROPERTY COMPILE_DEFINITIONS
+    LUA_LIB
+)
+list(APPEND THIRDPART_INC lsqlite3)
+set (THIRDPART_SRC ${THIRDPART_SRC} ${LSQL_SRC})
+#end lsqlite3
+
 if (NOT PBC)
 	#begin lua-profobuf
 	set (LPB_SRC 
